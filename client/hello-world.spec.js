@@ -11,9 +11,10 @@ describe('hello world component', function () {
     component = ReactTestUtils.renderIntoDocument(<HelloWorld />);
   });
 
-  it('displays hello world', function () {
+  it('displays hello world', function (done) {
     const node = ReactDOM.findDOMNode(component);
 
     chai.assert.equal('Hello World', node.textContent, "does not contain 'Hello World'");
+    done();
   });
 });
