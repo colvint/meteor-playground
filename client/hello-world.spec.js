@@ -12,8 +12,16 @@ describe('hello world component', function () {
   });
 
   it('displays hello world', function () {
-    const node = ReactDOM.findDOMNode(component);
+    const h1Node = ReactTestUtils.findRenderedDOMComponentWithTag(component, 'h1');
 
-    expect(node.textContent).to.equal('Hello World');
+    expect(h1Node.textContent).to.equal('Hello World');
+  });
+
+  it('increments the click count', function () {
+    const btnNode = ReactTestUtils.findRenderedDOMComponentWithTag(component, 'button');
+
+    expect(component.state.clickCount).to.equal(0);
+    ReactTestUtils.Simulate.click(btnNode);
+    expect(component.state.clickCount).to.equal(1);
   });
 });
